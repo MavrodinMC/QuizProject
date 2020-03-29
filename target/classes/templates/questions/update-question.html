@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}">
+<head>
+    <title>Spring Boot Thymeleaf + Spring Security</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+
+    <form action="#"
+          th:action="@{/questions/edit}"
+          th:object="${question}"
+          method="post">
+<!--        <label for="id">Id</label>-->
+<!--        <input type="text" th:field="*{id}" id="id" placeholder="Id" readonly="readonly">-->
+        <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+<!--        <label for="subject">Subject</label>-->
+<!--        <input type="text" th:field="*{subject}" id="subject" placeholder="Subject">-->
+
+
+
+        <div class="form-row">
+            <div class="form-group col-md-10">
+                <input type="text" class="form-control" th:field="*{id}" readonly="readonly">
+            </div>
+            <div class="form-group col-md-2">
+                <input type="text" class="form-control" th:field="*{subject}" placeholder="Intrebare">
+            </div>
+        </div>
+
+
+
+        <span th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></span>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-10">
+                <label for="option1">Raspuns 1</label>
+                <input type="text" class="form-control" id="option1" th:field="*{option1}">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="isValid1">Corect ?</label>
+                <input class="form-check-input" type="checkbox" id="isValid1" th:field="*{isValid1}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-10">
+                <label for="option2">Raspuns 2</label>
+                <input type="text" class="form-control" id="option2" th:field="*{option2}">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="isValid2">Corect ?</label>
+                <input class="form-check-input" type="checkbox" id="isValid2" th:field="*{isValid2}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-10">
+                <label for="option3">Raspuns 3</label>
+                <input type="text" class="form-control" id="option3" th:field="*{option3}">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="isValid3">Corect ?</label>
+                <input class="form-check-input" type="checkbox" id="isValid3" th:field="*{isValid3}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-10">
+                <label for="option4">Raspuns 4</label>
+                <input type="text" class="form-control" id="option4" th:field="*{option4}">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="isValid4">Corect ?</label>
+                <input class="form-check-input" type="checkbox" id="isValid4" th:field="*{isValid4}">
+            </div>
+        </div>
+
+        <input type="submit" value="Actualizeaza">
+    </form>
+
+</div>
+</body>
+</html>

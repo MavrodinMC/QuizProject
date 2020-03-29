@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}">
+<head>
+    <title>Spring Boot Thymeleaf + Spring Security</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+
+    <div th:switch="${questions}">
+        <h2 th:case="null">No questions yet!</h2>
+        <div th:case="*">
+            <h2>Questions</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Question ID</th>
+                    <th>Question Subject</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="question : ${questions}">
+                    <td th:text="${question.id}"></td>
+                    <td th:text="${question.subject}"></td>
+                    <td><a th:href="@{/questions/edit/{id}(id=${question.id})}">Edit</a></td>
+                    <td><a th:href="@{/questions/delete/{id}(id=${question.id})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><a class="btn btn-primary" href="/questions/add">Add a new question</a></p>
+    </div>
+
+</div>
+</body>
+</html>

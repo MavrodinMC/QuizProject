@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}">
+<head>
+    <title>Spring Boot Thymeleaf + Spring Security</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+
+    <form action="#"
+          th:action="@{/questions/add}"
+          th:object="${question}"
+          method="post">
+        <div class="form-group">
+            <label for="subject">Intrebare</label>
+            <input type="text" class="form-control" id="subject" aria-describedby="emailHelp" th:field="*{subject}">
+            <span th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></span>
+        </div>
+
+        <div class="form-row" th:each="answer, itemStat : *{answers}">
+            <div class="col">
+                <label for="subject">Raspuns 1</label>
+                <input type="text" class="form-control" th:field="*{answers[__${itemStat.index}__].option}">
+            </div>
+            <div class="col">
+                <input class="form-check-input" type="checkbox" th:field="*{answers[__${itemStat.index}__].isValid}">
+            </div>
+        </div>
+
+        <br/>
+
+        <input type="submit" class="btn btn-success" value="Post Question">
+
+    </form>
+
+
+</div>
+</body>
+</html>
